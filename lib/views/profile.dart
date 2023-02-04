@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:unicons/unicons.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
 import '../global/global.dart';
@@ -136,7 +136,7 @@ class _MyProfileState extends State<MyProfile> {
                       const SizedBox(
                         width: 20,
                       ),
-                      const Icon(UniconsLine.car)
+                      
                     ],
                   ),
                   SizedBox(

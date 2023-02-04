@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:unicons/unicons.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:caravan/global/global.dart';
@@ -35,6 +35,25 @@ class _CaravanDetailState extends State<CaravanDetail> {
   TextEditingController passenger = TextEditingController();
 
   late bool sendRequest ;
+
+    Future getRequest() async {
+    return FirebaseFirestore.instance
+        .collection("carvan")
+        .doc(widget.model.caravanId)
+        .collection("request")
+        .where("userId", isEqualTo: sharedPreferences!.getString("uid"))
+        .get()
+        .then((QuerySnapshot snapshot) {
+      if (snapshot.docs.isNotEmpty) {
+        setState(() {
+          sendRequest = true;
+        });
+      }
+    });
+  }
+   getUserRequest() {
+    getRequest();
+  }
 
   String requestId = DateTime.now().millisecondsSinceEpoch.toString();
   Future sentRequestToAdmin() async {
@@ -524,6 +543,7 @@ class _CaravanDetailState extends State<CaravanDetail> {
     });
     // TODO: implement initState
     getQueueRequest();
+    getUserRequest();
     source = TextEditingController(text: widget.model.source);
     destination = TextEditingController(text: widget.model.destination);
     date = TextEditingController(text: widget.model.date);
