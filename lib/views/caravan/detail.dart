@@ -34,23 +34,7 @@ class _CaravanDetailState extends State<CaravanDetail> {
   TextEditingController price = TextEditingController();
   TextEditingController passenger = TextEditingController();
 
-  @override
-  void initState() {
-    setState(() {
-      sendRequest = widget.requestSent;
-    });
-    // TODO: implement initState
-    source = TextEditingController(text: widget.model.source);
-    destination = TextEditingController(text: widget.model.destination);
-    date = TextEditingController(text: widget.model.date);
-    time = TextEditingController(text: widget.model.time);
-    price = TextEditingController(text: widget.model.price);
-    passenger = TextEditingController(text: widget.model.passenger);
-
-    super.initState();
-  }
-
-  bool sendRequest = false;
+  late bool sendRequest ;
 
   String requestId = DateTime.now().millisecondsSinceEpoch.toString();
   Future sentRequestToAdmin() async {
@@ -65,7 +49,8 @@ class _CaravanDetailState extends State<CaravanDetail> {
       "userId": sharedPreferences!.getString("uid"),
       "requestId": requestId,
       "admin": widget.model.admin,
-      "caravanId": widget.model.caravanId
+      "caravanId": widget.model.caravanId,
+      "username": sharedPreferences!.getString("name"),
     });
   }
 
@@ -80,6 +65,7 @@ class _CaravanDetailState extends State<CaravanDetail> {
       "requestId": requestId,
       "admin": widget.model.admin,
       "caravanId": widget.model.caravanId,
+      "username": sharedPreferences!.getString("name"),
     });
   }
 
@@ -93,7 +79,8 @@ class _CaravanDetailState extends State<CaravanDetail> {
       "userId": sharedPreferences!.getString("uid"),
       "requestId": requestId,
       "admin": widget.model.admin,
-      "caravanId": widget.model.caravanId
+      "caravanId": widget.model.caravanId,
+      "username": sharedPreferences!.getString("name"),
     });
   }
 
@@ -511,12 +498,14 @@ class _CaravanDetailState extends State<CaravanDetail> {
                         shrinkWrap: true,
                         itemCount: snapshot.data.docs.length,
                         itemBuilder: (context, index) {
-                          Post model = Post.fromJson(snapshot.data!.docs[index]
-                              .data()! as Map<String, dynamic>);
+                          print(snapshot.data.docs.length);
+                          Request request_model = Request.fromJson(
+                              snapshot.data!.docs[index].data()!
+                                  as Map<String, dynamic>);
+
                           return GestureDetector(
-                            child: PostDesign(
-                              model: model,
-                              index: index,
+                            child: QueueRequest(
+                              model: request_model,
                             ),
                           );
                         });
@@ -528,7 +517,87 @@ class _CaravanDetailState extends State<CaravanDetail> {
     );
   }
 
+  @override
+  void initState() {
+    setState(() {
+      sendRequest = widget.requestSent;
+    });
+    // TODO: implement initState
+    getQueueRequest();
+    source = TextEditingController(text: widget.model.source);
+    destination = TextEditingController(text: widget.model.destination);
+    date = TextEditingController(text: widget.model.date);
+    time = TextEditingController(text: widget.model.time);
+    price = TextEditingController(text: widget.model.price);
+    passenger = TextEditingController(text: widget.model.passenger);
+
+    super.initState();
+  }
+
   Stream? feeds;
 
-  
+  Future<Stream<QuerySnapshot>> getQueue() async {
+    return FirebaseFirestore.instance
+        .collection("carvan")
+        .doc(widget.model.caravanId)
+        .collection("request")
+        .snapshots();
+  }
+
+  getQueueRequest() async {
+    await getQueue().then((value) {
+      setState(() {
+        feeds = value;
+      });
+    });
+  }
+}
+
+class QueueRequest extends StatefulWidget {
+  Request model;
+  QueueRequest({
+    Key? key,
+    required this.model,
+  }) : super(key: key);
+
+  @override
+  State<QueueRequest> createState() => _QueueRequestState();
+}
+
+class _QueueRequestState extends State<QueueRequest> {
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: MediaQuery.of(context).size.width,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Row(
+        children: [
+          Icon(
+            Icons.person,
+            size: 20,
+            color: Colors.purpleAccent[700],
+          ),
+          const SizedBox(
+            width: 40,
+          ),
+          widget.model.username.text
+              .textStyle(GoogleFonts.poppins(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.grey[700]))
+              .make(),
+        ],
+      ),
+    ).px12();
+  }
 }
