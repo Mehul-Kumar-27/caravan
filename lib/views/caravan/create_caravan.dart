@@ -61,7 +61,7 @@ class _CaravanState extends State<Caravan> {
                 .textStyle(GoogleFonts.poppins(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.indigo))
+                    color: Colors.deepPurple[700]))
                 .make(),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,

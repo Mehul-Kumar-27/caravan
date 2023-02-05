@@ -74,7 +74,7 @@ class _JoinCaravanState extends State<JoinCaravan> {
                   .textStyle(GoogleFonts.poppins(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
-                      color: Colors.indigo))
+                      color: Colors.deepPurple[700]))
                   .make()
                   .px24(),
             ],

@@ -86,7 +86,7 @@ class _RegisterViewState extends State<RegisterView> {
                       style: GoogleFonts.poppins(
                         fontSize: screenWidth(22.24),
                         fontWeight: FontWeight.w600,
-                        color: AppColors.mainColor,
+                        color: Colors.deepPurple[700]!,
                       ),
                     ),
                     SizedBox(
@@ -97,7 +97,7 @@ class _RegisterViewState extends State<RegisterView> {
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400,
                         fontSize: screenWidth(11.8),
-                        color: AppColors.textColor1,
+                        color: Colors.deepPurple,
                       ),
                     ),
                     SizedBox(
@@ -116,7 +116,7 @@ class _RegisterViewState extends State<RegisterView> {
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w400,
                               fontSize: screenWidth(11.8),
-                              color: AppColors.textColor,
+                              color: Colors.deepPurple[600],
                             ),
                           ),
                           SizedBox(
@@ -150,7 +150,7 @@ class _RegisterViewState extends State<RegisterView> {
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w400,
                               fontSize: screenWidth(11.8),
-                              color: AppColors.textColor,
+                              color: Colors.deepPurple[600],
                             ),
                           ),
                           SizedBox(
@@ -184,7 +184,7 @@ class _RegisterViewState extends State<RegisterView> {
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.w400,
                               fontSize: screenWidth(11.8),
-                              color: Colors.black,
+                              color: Colors.deepPurple[600],
                             ),
                           ),
                           SizedBox(
@@ -218,7 +218,7 @@ class _RegisterViewState extends State<RegisterView> {
                             height: screenWidth(34.7),
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
-                                backgroundColor: AppColors.mainColor,
+                                backgroundColor: Colors.deepPurple[600],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(30),
                                 ),
@@ -282,9 +282,9 @@ class _RegisterViewState extends State<RegisterView> {
                                 },
                                 child: Text(
                                   style: GoogleFonts.poppins(
-                                    color: AppColors.mainColor,
+                                    color: Colors.deepPurple[600],
                                     fontSize: screenWidth(10.42),
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w800,
                                   ),
                                   'Login here!',
                                 ),

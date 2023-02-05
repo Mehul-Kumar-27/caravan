@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:caravan/views/rental/rentailDetail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -209,6 +210,12 @@ class _AlarmViewState extends State<AlarmView> {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                buildIndicator(),
+              ],
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.02,
             ),
@@ -266,7 +273,13 @@ class _AlarmViewState extends State<AlarmView> {
                           gradient: LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomLeft,
-                              colors: [Colors.white, Colors.grey[300]!])),
+                              colors: [
+                                Colors.deepPurple,
+                                Colors.deepPurple[100]!,
+                                Colors.deepPurple[100]!,
+                                Colors.deepPurple[100]!,
+                                Colors.deepPurple[400]!,
+                              ])),
                       height: MediaQuery.of(context).size.height * 0.14,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: Stack(children: [
@@ -309,7 +322,13 @@ class _AlarmViewState extends State<AlarmView> {
                           gradient: LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.bottomLeft,
-                              colors: [Colors.white, Colors.grey[300]!])),
+                              colors: [
+                                Colors.deepPurple,
+                                Colors.deepPurple[100]!,
+                                Colors.deepPurple[100]!,
+                                Colors.deepPurple[100]!,
+                                Colors.deepPurple[400]!,
+                              ])),
                       height: MediaQuery.of(context).size.height * 0.14,
                       width: MediaQuery.of(context).size.width * 0.4,
                       child: Stack(children: [
@@ -339,6 +358,9 @@ class _AlarmViewState extends State<AlarmView> {
                   ).px16(),
                 )
               ],
+            ),
+            const SizedBox(
+              height: 50,
             )
           ],
         ),
@@ -369,7 +391,12 @@ class _RentalCarState extends State<RentalCar> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => RentailDetail(model: widget.model)));
+      },
       child: Material(
         borderRadius: BorderRadius.circular(40),
         color: Colors.grey[200],

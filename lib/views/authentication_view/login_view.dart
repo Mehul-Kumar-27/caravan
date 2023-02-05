@@ -80,18 +80,18 @@ class _LoginViewState extends State<LoginView> {
                       style: GoogleFonts.poppins(
                         fontSize: screenWidth(22.24),
                         fontWeight: FontWeight.w600,
-                        color: AppColors.mainColor,
+                        color: Colors.deepPurple[700],
                       ),
                     ),
                     SizedBox(
                       height: screenHeight(6.94),
                     ),
                     Text(
-                      "And never miss your medicines",
+                      "To the Caravan ................",
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w400,
                         fontSize: screenWidth(11.8),
-                        color: AppColors.textColor1,
+                        color: Colors.deepPurple,
                       ),
                     ),
                     SizedBox(
@@ -184,7 +184,7 @@ class _LoginViewState extends State<LoginView> {
                                 },
                                 child: Text(
                                   style: GoogleFonts.poppins(
-                                    color: AppColors.mainColor,
+                                    color: Colors.deepPurple,
                                     decoration: TextDecoration.underline,
                                     decorationThickness: 1.5,
                                     fontSize: screenWidth(10.41),
@@ -201,7 +201,7 @@ class _LoginViewState extends State<LoginView> {
                             height: screenWidth(34.7),
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
-                                backgroundColor: AppColors.mainColor,
+                                backgroundColor: Colors.deepPurpleAccent[400],
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(
                                       screenHeight(20.86)),
@@ -250,7 +250,7 @@ class _LoginViewState extends State<LoginView> {
                             children: [
                               Text(
                                 style: GoogleFonts.poppins(
-                                  color: AppColors.textColor1,
+                                  color: Colors.deepPurple,
                                   fontSize: screenWidth(10.42),
                                   fontWeight: FontWeight.w500,
                                 ),
@@ -264,9 +264,9 @@ class _LoginViewState extends State<LoginView> {
                                 },
                                 child: Text(
                                   style: GoogleFonts.poppins(
-                                    color: AppColors.mainColor,
+                                    color: Colors.deepPurple,
                                     fontSize: screenWidth(10.42),
-                                    fontWeight: FontWeight.w500,
+                                    fontWeight: FontWeight.w800,
                                   ),
                                   'Register here!',
                                 ),
