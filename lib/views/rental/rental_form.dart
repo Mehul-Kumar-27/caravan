@@ -23,7 +23,7 @@ class _RentalFormState extends State<RentalForm> {
   @override
   TextEditingController _carname = TextEditingController();
   TextEditingController _description = TextEditingController();
-  TextEditingController _authorController = TextEditingController();
+  TextEditingController priceController = TextEditingController();
   String type = "";
   String category = "";
 
@@ -39,7 +39,7 @@ class _RentalFormState extends State<RentalForm> {
     });
   }
 
-  String bookImageUrl = "";
+  String carImageUrl = "";
 
   uploadImage() async {
     String fileName = DateTime.now().millisecondsSinceEpoch.toString();
@@ -51,7 +51,7 @@ class _RentalFormState extends State<RentalForm> {
     fStorage.TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() {});
 
     await taskSnapshot.ref.getDownloadURL().then((url) {
-      bookImageUrl = url;
+      carImageUrl = url;
     });
   }
 
@@ -62,10 +62,24 @@ class _RentalFormState extends State<RentalForm> {
     _selectedDate = DateTime.now();
   }
 
+  String availableFromDate = "";
+  String availableToDate = "";
+
+  Future addRentalCar() async {
+    FirebaseFirestore.instance.collection("rental").doc(rentalId).set({
+      "carname": _carname.text,
+      "price": priceController.text,
+      "description": _description.text,
+      "availableFrom": availableFromDate,
+      "availableTo": availableToDate,
+      "rentalId": rentalId,
+      "imageUrl": carImageUrl,
+      "admin": sharedPreferences!.getString("uid"),
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    String availableFromDate = "";
-    String availableToDate = "";
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -256,35 +270,7 @@ class _RentalFormState extends State<RentalForm> {
     );
   }
 
-  String groupId = DateTime.now().millisecondsSinceEpoch.toString();
-
-  Future createGroupForUser() async {
-    FirebaseFirestore.instance
-        .collection("user")
-        .doc(sharedPreferences!.getString("uid"))
-        .collection("groups")
-        .add({
-      "category": category,
-      "description": _description.text,
-      "authorName": _authorController.text,
-      "bookName": _carname.text,
-      "groupId": groupId,
-      "admin": sharedPreferences!.getString("uid"),
-      "bookUrl": bookImageUrl
-    });
-  }
-
-  Future createGroupForEveryOne() async {
-    FirebaseFirestore.instance.collection("groups").add({
-      "category": category,
-      "description": _description.text,
-      "authorName": _authorController.text,
-      "bookName": _carname.text,
-      "groupId": groupId,
-      "admin": sharedPreferences!.getString("uid"),
-      "bookUrl": bookImageUrl
-    });
-  }
+  String rentalId = DateTime.now().millisecondsSinceEpoch.toString();
 
   bool creatingGroup = false;
 
@@ -295,8 +281,8 @@ class _RentalFormState extends State<RentalForm> {
           creatingGroup = true;
         });
         await uploadImage();
-        await createGroupForUser();
-        await createGroupForEveryOne().then((value) {
+
+        await addRentalCar().then((value) {
           Navigator.pop(context);
         });
       },
@@ -373,7 +359,7 @@ class _RentalFormState extends State<RentalForm> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
-        controller: _authorController,
+        controller: priceController,
         style: const TextStyle(
           color: Colors.white70,
           fontSize: 17,
