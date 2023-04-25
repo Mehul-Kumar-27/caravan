@@ -1,16 +1,23 @@
-# caravan
+# Caravan
 
-A new Flutter project.
+Caravan helps building a sustainable solution for future of automobiles. By providing a platform for car pooling and rental, this application can help to create a more sustainable future for our earth
 
-## Getting Started
+# Inspiration
 
-This project is a starting point for a Flutter application.
+The inspiration for building an application that supports car pooling and car rental stems from the need to reduce pollution and promote sustainability. Such an application can help to reduce the number of cars on the road and thus decrease the amount of carbon emissions. Additionally, it encourages people to share resources and save money on transportation costs. By providing a platform for car pooling and rental, this application can help to create a more sustainable future for our planet.
 
-A few resources to get you started if this is your first Flutter project:
+# What it does
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Caravan application provides a platform for users to share their vehicles or find vehicles to rent.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Caravan: In caravan feature, users can offer their vehicles for others to join them on a trip. This reduces the number of cars on the road and helps to save on transportation costs.
+
+Car Rental: In car rental, users can rent a car from other individuals or companies. This is a convenient option for those who need a car temporarily but do not want the expenses and responsibilities of owning one.
+
+The application provides a user-friendly interface to search and book a ride, communicate with the driver or renter, and make payments.
+
+Overall, the application supports sustainability by reducing the number of cars on the road, encouraging resource sharing, and reducing carbon emissions.
+
+# Watch Demonstartion
+
+https://youtu.be/z4T627TY9nE
