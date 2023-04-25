@@ -288,7 +288,7 @@ class _PostDesignState extends State<PostDesign> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
-              children: [Icon(Icons.arrow_forward_ios)],
+              children: const [Icon(Icons.arrow_forward_ios)],
             )
           ],
         ),
