@@ -48,7 +48,7 @@ dependencies:
   file_picker: ^5.1.0
   image_picker: ^0.8.5+3
   lottie: ^2.2.0
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.4
   firebase_storage: ^11.0.10
   carousel_slider: ^4.2.1
   smooth_page_indicator: ^1.0.0+2
